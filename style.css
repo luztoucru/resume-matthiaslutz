@@ -420,3 +420,115 @@ body {
         height: 280px; /* Ajuste la hauteur sur mobile */
     }
 }
+
+/* ============================================= */
+/* --- STYLES POUR LA VUE MOBILE (RESPONSIVE) --- */
+/* ============================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- 1. Ajustements Généraux --- */
+    body {
+        line-height: 1.6; /* Améliore la lisibilité du texte */
+    }
+
+    .section {
+        padding: 3.5rem 0; /* Réduit les espacements verticaux */
+    }
+
+    .container {
+        padding: 0 1.5rem; /* Réduit les marges latérales */
+    }
+
+
+    /* --- 2. Section d'Accueil (Hero) --- */
+    .hero h1 {
+        font-size: 2.8rem; /* Réduit la taille du titre principal */
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem; /* Réduit la taille du sous-titre */
+    }
+
+
+    /* --- 3. Menu de Navigation (Burger) --- */
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: var(--surface-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        border-left: 1px solid #282828;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        margin: 2rem 0;
+    }
+
+    .burger {
+        display: block; /* Affiche l'icône burger */
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+
+    /* --- 4. Section À Propos (avec photo) --- */
+    .about-container {
+        flex-direction: column; /* Passe la photo au-dessus du texte */
+        text-align: center;
+    }
+
+    .about-text h2 {
+        text-align: center; /* Centre le titre "À propos de moi" */
+    }
+
+    .profile-photo-frame {
+        width: 200px;
+        height: 280px;
+    }
+
+
+    /* --- 5. Grilles (Compétences & Projets) --- */
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr; /* Passe les grilles sur une seule colonne */
+    }
+
+
+    /* --- 6. Parcours (Timeline) --- */
+    .timeline::after {
+        left: 20px; /* Décale la ligne verticale sur la gauche */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px; /* Laisse de la place pour la ligne */
+        padding-right: 15px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0; /* Aligne tous les éléments à gauche */
+    }
+
+    .timeline-item::after {
+        left: 10px; /* Positionne les cercles sur la ligne */
+    }
+}
