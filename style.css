@@ -380,7 +380,7 @@ body {
     height: 350px; /* Hauteur du cadre (pour un rectangle) */
     
     background-color: #fff; /* Couleur du cadre (blanc) */
-    padding: 10px; /* Épaisseur de la bordure blanche */
+    padding: 5px; /* Épaisseur de la bordure blanche */
     border-radius: 15px; /* Rayon pour les bords arrondis */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre subtile pour le relief */
     
