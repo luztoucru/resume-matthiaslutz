@@ -374,12 +374,30 @@ body {
     gap: 3rem;
 }
 
+.profile-photo-frame {
+    /* Dimensions du cadre */
+    width: 250px; /* Largeur du cadre */
+    height: 350px; /* Hauteur du cadre (pour un rectangle) */
+    
+    background-color: #fff; /* Couleur du cadre (blanc) */
+    padding: 10px; /* Épaisseur de la bordure blanche */
+    border-radius: 15px; /* Rayon pour les bords arrondis */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre subtile pour le relief */
+    
+    display: flex; /* Pour centrer l'image dans le cadre */
+    justify-content: center;
+    align-items: center;
+    
+    flex-shrink: 0; /* Empêche le cadre de rétrécir sur petit écran */
+}
+
 .profile-photo {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
+    width: 100%; /* L'image prend toute la largeur du cadre */
+    height: 100%; /* L'image prend toute la hauteur du cadre */
+    object-fit: cover; /* Recadre l'image pour qu'elle remplisse le cadre sans la déformer */
+    border-radius: 10px; /* Bords légèrement arrondis pour l'image à l'intérieur du cadre */
+    /* Nous enlevons la bordure colorée ici, elle est maintenant gérée par le cadre */
+    /* border: 3px solid var(--primary-color); */
 }
 
 .about-text h2 {
@@ -395,5 +413,10 @@ body {
 
     .about-text h2 {
         text-align: center; /* Recentrer le titre sur mobile */
+    }
+
+    .profile-photo-frame {
+        width: 200px; /* Ajuste la largeur sur mobile */
+        height: 280px; /* Ajuste la hauteur sur mobile */
     }
 }
