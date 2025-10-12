@@ -202,11 +202,7 @@ body {
 /* Le CSS de la timeline est déjà bon et bénéficie de l'effet glassmorphism via .timeline-content */
 
 /* --- Projets --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
+
 
 .btn-secondary {
     display: inline-block;
@@ -531,4 +527,48 @@ body {
     .timeline-item::after {
         left: 10px; /* Positionne les cercles sur la ligne */
     }
+}
+
+/* ================================== */
+/* --- STYLES POUR LE CARROUSEL --- */
+/* ================================== */
+
+.carousel {
+    width: 100%;
+    overflow: hidden; /* Cache les projets qui dépassent */
+    position: relative;
+    /* Ajoute un effet de fondu sur les côtés pour un look pro */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+    display: flex; /* Aligne les projets horizontalement */
+    /* (Largeur d'une carte + marge) * (nombre total de cartes) */
+    /* (340px) * (8 cartes) = 2720px */
+    width: calc(340px * 8); 
+    animation: scroll 40s linear infinite; /* L'animation de défilement */
+}
+
+/* Met l'animation en pause quand la souris est sur le carrousel */
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* Animation qui déplace la piste de gauche à droite */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Se déplace de la moitié de la largeur totale (la longueur des 4 projets originaux) */
+        transform: translateX(calc(-340px * 4));
+    }
+}
+
+/* Style des cartes à l'intérieur du carrousel */
+.carousel .project-card {
+    width: 300px; /* Largeur fixe pour chaque projet */
+    margin: 0 20px; /* Marge entre les projets */
+    flex-shrink: 0; /* Empêche les cartes de rétrécir */
 }
