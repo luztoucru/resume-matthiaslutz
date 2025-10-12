@@ -1,0 +1,399 @@
+/* --- Variables et Styles Généraux --- */
+:root {
+    --primary-color: #007BFF; /* Bleu électrique pour l'accentuation */
+    --background-color: #121212; /* Fond sombre */
+    --surface-color: #1E1E1E; /* Couleur des cartes et surfaces */
+    --text-color: #EAEAEA;
+    --secondary-text-color: #A0A0A0;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.7;
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 5rem 0;
+    border-bottom: 1px solid #282828;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+/* --- Animations au défilement --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Barre de Navigation --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #282828;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.burger {
+    display: none; /* Caché par défaut sur grand écran */
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* --- Section Accueil (Hero) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+}
+
+.animated-gradient {
+    background: linear-gradient(90deg, #007BFF, #00C6FF, #ee7752, #e73c7e);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 8s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--secondary-text-color);
+    margin: 1rem 0 2.5rem 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* --- Effet Glassmorphism pour les cartes --- */
+.skill-item, .project-card, .timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item:hover, .project-card:hover, .timeline-item:hover .timeline-content {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Compétences --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Parcours (Timeline) --- */
+/* Le CSS de la timeline est déjà bon et bénéficie de l'effet glassmorphism via .timeline-content */
+
+/* --- Projets --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.btn-secondary:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* --- Styles pour la vue mobile/tablette --- */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh; /* Hauteur de la navbar */
+        background-color: var(--surface-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        border-left: 1px solid #282828;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        margin: 2rem 0;
+    }
+
+    .burger {
+        display: block; /* Affiché sur petit écran */
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+/* Animation des liens quand le menu est actif */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Animation de l'icône Burger -> Croix */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* --- Section Contact (Ajouts) --- */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Espace entre les boutons */
+    margin-top: 2.5rem;
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne sur mobile */
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Bords arrondis */
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    /* CHANGEMENT ICI: fond plus visible */
+    background: var(--surface-color); 
+    border: 1px solid var(--primary-color); /* Bordure colorée pour attirer l'oeil */
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+/* --- Centrer le texte des sections --- */
+.section .container > p {
+    text-align: center;
+    max-width: 800px; /* Optionnel: améliore la lisibilité sur grand écran */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Effet Typewriter --- */
+.animated-gradient {
+    position: relative; /* Nécessaire pour le positionnement du curseur */
+}
+
+/* Le curseur clignotant */
+.animated-gradient::after {
+    content: '|';
+    position: absolute;
+    right: -10px; /* Ajustez si besoin */
+    font-weight: 300;
+    color: var(--primary-color);
+    animation: blink 1s infinite;
+}
+
+/* Animation du clignotement */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- Section À Propos (avec photo) --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+
+.about-text h2 {
+    text-align: left; /* Aligne le titre avec le texte */
+}
+
+/* --- Responsive pour la section À Propos --- */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text h2 {
+        text-align: center; /* Recentrer le titre sur mobile */
+    }
+}

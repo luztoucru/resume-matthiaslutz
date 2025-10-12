@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Matthias LUTZ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Bienvenue !</a>
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#experience">Parcours</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Hello, World! Je suis <span id="typewriter" class="animated-gradient">Matthias LUTZ</span></h1>
+            <p class="subtitle">Etudiant ingénieur de 2e année à l'Université de Technologie de Belfort-Montbéliard (UTBM), passionné par <em>l'informatique et le sport.</em></p>
+            <a href="#about" class="btn">En apprendre plus sur moi</a>
+        </div>
+    </header>
+
+    <section id="about" class="section hidden">
+    <div class="container about-container">
+        <img src="moi.PNG" alt="Photo de Matthias Lutz" class="profile-photo">
+        <div class="about-text">
+            <h2>À propos de moi</h2>
+            <p>
+                Actuellement en Service Civique où je gère la communication digitale, j'ai eu l'occasion de développer mes compétences en création de contenu pour diverses plateformes. Ancien membre du Conseil Municipal des Jeunes, je suis une personne engagée. Ma passion pour le handball m'a appris la discipline et le travail d'équipe, des qualités que je souhaite mettre au service de votre entreprise dans le cadre d'une alternance de trois ans.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section id="skills" class="section hidden">
+        <div class="container">
+            <h2>Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement & Programmation</h3>
+                    <p>HTML/CSS, Langage C, Programmation sous environnement Linux.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Logiciels & Systèmes</h3>
+                    <p>Pack Office (Excel, Word, PowerPoint), Hardware & Software, Création d'applications.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-language"></i>
+                    <h3>Langues & Créativité</h3>
+                    <p>Anglais (Compétent), Allemand (Avancé), Montage Photos & Vidéos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section hidden">
+    <div class="container">
+        <h2>Mon Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Assistant communication - Service Civique</h3>
+                    <span class="date">Septembre 2025 - Présent</span>
+                    <p><strong>C5Vesoul70 Partenaires</strong> - Gestion des réseaux (Facebook, Instagram, TikTok), création de visuels et rédaction de contenu.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Opérateur de production & Stagiaire</h3>
+                    <span class="date">Été & Hiver 2025</span>
+                    <p><strong>Stellantis</strong> - Missions variées incluant l'étiquetage, l'emballage, le contrôle qualité et la gestion de données techniques.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Étudiant en cycle préparatoire d'ingénieur</h3>
+                    <span class="date">Septembre 2024 - Présent</span>
+                    <p><strong>Université de Technologie de Belfort-Montbéliard (UTBM)</strong>.</p>
+                </div>
+            </div>
+             <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Baccalauréat Général - Mention Bien</h3>
+                    <span class="date">2021 - 2024</span>
+                    <p><strong>Lycée Edouard Belin</strong> - Spécialités : Mathématiques, Physique/Chimie et Informatique.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Stages d'observation (Collège)</h3>
+                    <span class="date">2021 & 2022</span>
+                    <p>Stage de 3 jours à la <strong>MMC de Vesoul</strong> et de 5 jours au service informatique de <strong>Vesoul Agrocampus</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section hidden">
+    <div class="container">
+        <h2>Mes Projets</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Jeu de lettres en C</h3>
+                    <p>Développement d'un jeu de lettres : génération de grille, vérification des mots dans un dictionnaire, timer, score et historique des parties.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Site de vocabulaire collaboratif</h3>
+                    <p>Création d'un site web inspiré de Quizlet, permettant de réviser le vocabulaire anglais de manière collaborative et interactive.</p>
+                    <a href="https://matthiasvocable03.page.gd/?i=1" class="btn-secondary" target="_blank">Voir le projet</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Crunch Time 2025</h3>
+                    <p>Participation à un projet universitaire intensif sur une semaine, axé sur la résolution de problématiques concrètes en équipe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="contact" class="section hidden">
+        <div class="container">
+            <h2>Entrons en contact</h2>
+            <p>À la recherche d'une alternance pour Septembre 2025, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/matthias-lutz-97a853332/" target="_blank" class="contact-button">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:matthias.lutz@utbm.fr" class="contact-button">
+                    <i class="fas fa-envelope"></i>E-mail
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Matthias LUTZ. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
