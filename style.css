@@ -572,3 +572,12 @@ body {
     margin: 0 20px; /* Marge entre les projets */
     flex-shrink: 0; /* Empêche les cartes de rétrécir */
 }
+
+/* --- Style pour les sous-titres de la section Parcours --- */
+.parcours-subtitle {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
