@@ -1,8 +1,10 @@
-/* --- Variables et Styles Généraux --- */
+/* ============================================= */
+/* --- 1. VARIABLES ET STYLES GÉNÉRAUX --- */
+/* ============================================= */
 :root {
-    --primary-color: #007BFF; /* Bleu électrique pour l'accentuation */
-    --background-color: #121212; /* Fond sombre */
-    --surface-color: #1E1E1E; /* Couleur des cartes et surfaces */
+    --primary-color: #007BFF;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
     --text-color: #EAEAEA;
     --secondary-text-color: #A0A0A0;
     --font-family: 'Montserrat', sans-serif;
@@ -23,6 +25,7 @@ body {
     line-height: 1.7;
     color: var(--text-color);
     background: var(--background-color);
+    overflow-x: hidden;
 }
 
 .container {
@@ -32,6 +35,9 @@ body {
     padding: 0 2rem;
 }
 
+/* ============================================= */
+/* --- 2. STRUCTURE PRINCIPALE (HEADER, SECTIONS, FOOTER) --- */
+/* ============================================= */
 .section {
     padding: 5rem 0;
     border-bottom: 1px solid #282828;
@@ -44,19 +50,13 @@ body {
     color: #fff;
 }
 
-/* --- Animations au défilement --- */
-.hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+.section .container > p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Barre de Navigation --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -103,20 +103,6 @@ body {
     color: var(--primary-color);
 }
 
-.burger {
-    display: none; /* Caché par défaut sur grand écran */
-    cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-/* --- Section Accueil (Hero) --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -130,20 +116,6 @@ body {
     font-size: 4.5rem;
 }
 
-.animated-gradient {
-    background: linear-gradient(90deg, #007BFF, #00C6FF, #ee7752, #e73c7e);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-animation 8s ease infinite;
-}
-
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 .hero .subtitle {
     font-size: 1.5rem;
     font-weight: 300;
@@ -151,6 +123,9 @@ body {
     margin: 1rem 0 2.5rem 0;
 }
 
+/* ============================================= */
+/* --- 3. COMPOSANTS (BOUTONS, CARTES, TIMELINE) --- */
+/* ============================================= */
 .btn {
     display: inline-block;
     padding: 0.9rem 2.2rem;
@@ -168,41 +143,6 @@ body {
     color: var(--primary-color);
     transform: translateY(-3px);
 }
-
-/* --- Effet Glassmorphism pour les cartes --- */
-.skill-item, .project-card, .timeline-content {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-item:hover, .project-card:hover, .timeline-item:hover .timeline-content {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* --- Compétences --- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.skill-item i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-/* --- Parcours (Timeline) --- */
-/* Le CSS de la timeline est déjà bon et bénéficie de l'effet glassmorphism via .timeline-content */
-
-/* --- Projets --- */
-
 
 .btn-secondary {
     display: inline-block;
@@ -231,81 +171,15 @@ body {
     transform-origin: bottom left;
 }
 
-
-/* --- Styles pour la vue mobile/tablette --- */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        right: 0px;
-        height: 92vh;
-        top: 8vh; /* Hauteur de la navbar */
-        background-color: var(--surface-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 60%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        border-left: 1px solid #282828;
-    }
-
-    .nav-links li {
-        opacity: 0;
-        margin: 2rem 0;
-    }
-
-    .burger {
-        display: block; /* Affiché sur petit écran */
-    }
-}
-
-.nav-active {
-    transform: translateX(0%);
-}
-
-/* Animation des liens quand le menu est actif */
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-/* Animation de l'icône Burger -> Croix */
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-    opacity: 0;
-}
-
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* --- Section Contact (Ajouts) --- */
-.contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem; /* Espace entre les boutons */
-    margin-top: 2.5rem;
-    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne sur mobile */
-}
-
 .contact-button {
     display: inline-flex;
     align-items: center;
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     color: var(--text-color);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px; /* Bords arrondis */
+    background: var(--surface-color); 
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -317,53 +191,77 @@ body {
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
 }
 
-.contact-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    color: var(--text-color);
-    /* CHANGEMENT ICI: fond plus visible */
-    background: var(--surface-color); 
-    border: 1px solid var(--primary-color); /* Bordure colorée pour attirer l'oeil */
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+.skill-item, .project-card, .timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 }
-/* --- Centrer le texte des sections --- */
-.section .container > p {
+
+.skill-item:hover, .project-card:hover, .timeline-item:hover .timeline-content {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
     text-align: center;
-    max-width: 800px; /* Optionnel: améliore la lisibilité sur grand écran */
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* --- Effet Typewriter --- */
-.animated-gradient {
-    position: relative; /* Nécessaire pour le positionnement du curseur */
-}
-
-/* Le curseur clignotant */
-.animated-gradient::after {
-    content: '|';
-    position: absolute;
-    right: -10px; /* Ajustez si besoin */
-    font-weight: 300;
+.skill-item i {
+    font-size: 3rem;
     color: var(--primary-color);
-    animation: blink 1s infinite;
+    margin-bottom: 1rem;
 }
 
-/* Animation du clignotement */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* --- Section À Propos (avec photo) --- */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 3px solid var(--primary-color);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::after { right: -10px; }
+.timeline-item:nth-child(even)::after { left: -10px; }
+
+/* ============================================= */
+/* --- 4. SECTIONS SPÉCIFIQUES --- */
+/* ============================================= */
 .about-container {
     display: flex;
     align-items: center;
@@ -371,213 +269,182 @@ body {
 }
 
 .profile-photo-frame {
-    /* Dimensions du cadre */
-    width: 250px; /* Largeur du cadre */
-    height: 350px; /* Hauteur du cadre (pour un rectangle) */
-    
-    background-color: #fff; /* Couleur du cadre (blanc) */
-    padding: 5px; /* Épaisseur de la bordure blanche */
-    border-radius: 15px; /* Rayon pour les bords arrondis */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre subtile pour le relief */
-    
-    display: flex; /* Pour centrer l'image dans le cadre */
+    width: 250px;
+    height: 350px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
     justify-content: center;
     align-items: center;
-    
-    flex-shrink: 0; /* Empêche le cadre de rétrécir sur petit écran */
+    flex-shrink: 0;
 }
 
 .profile-photo {
-    width: 100%; /* L'image prend toute la largeur du cadre */
-    height: 100%; /* L'image prend toute la hauteur du cadre */
-    object-fit: cover; /* Recadre l'image pour qu'elle remplisse le cadre sans la déformer */
-    border-radius: 10px; /* Bords légèrement arrondis pour l'image à l'intérieur du cadre */
-    /* Nous enlevons la bordure colorée ici, elle est maintenant gérée par le cadre */
-    /* border: 3px solid var(--primary-color); */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .about-text h2 {
-    text-align: left; /* Aligne le titre avec le texte */
+    text-align: left;
 }
 
-/* --- Responsive pour la section À Propos --- */
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-text h2 {
-        text-align: center; /* Recentrer le titre sur mobile */
-    }
-
-    .profile-photo-frame {
-        width: 200px; /* Ajuste la largeur sur mobile */
-        height: 280px; /* Ajuste la hauteur sur mobile */
-    }
-}
-
-/* ============================================= */
-/* --- STYLES POUR LA VUE MOBILE (RESPONSIVE) --- */
-/* ============================================= */
-@media screen and (max-width: 768px) {
-
-    /* --- 1. Ajustements Généraux --- */
-    body {
-        line-height: 1.6; /* Améliore la lisibilité du texte */
-    }
-
-    .section {
-        padding: 3.5rem 0; /* Réduit les espacements verticaux */
-    }
-
-    .container {
-        padding: 0 1.5rem; /* Réduit les marges latérales */
-    }
-
-
-    /* --- 2. Section d'Accueil (Hero) --- */
-    .hero h1 {
-        font-size: 2.8rem; /* Réduit la taille du titre principal */
-    }
-
-    .hero .subtitle {
-        font-size: 1.2rem; /* Réduit la taille du sous-titre */
-    }
-
-
-    /* --- 3. Menu de Navigation (Burger) --- */
-    .nav-links {
-        position: fixed;
-        right: 0px;
-        height: 92vh;
-        top: 8vh;
-        background-color: var(--surface-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 60%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        border-left: 1px solid #282828;
-    }
-
-    .nav-links li {
-        opacity: 0;
-        margin: 2rem 0;
-    }
-
-    .burger {
-        display: block; /* Affiche l'icône burger */
-    }
-
-    .nav-active {
-        transform: translateX(0%);
-    }
-
-    .toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    .toggle .line2 {
-        opacity: 0;
-    }
-    .toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-
-    /* --- 4. Section À Propos (avec photo) --- */
-    .about-container {
-        flex-direction: column; /* Passe la photo au-dessus du texte */
-        text-align: center;
-    }
-
-    .about-text h2 {
-        text-align: center; /* Centre le titre "À propos de moi" */
-    }
-
-    .profile-photo-frame {
-        width: 200px;
-        height: 280px;
-    }
-
-
-    /* --- 5. Grilles (Compétences & Projets) --- */
-    .skills-grid,
-    .projects-grid {
-        grid-template-columns: 1fr; /* Passe les grilles sur une seule colonne */
-    }
-
-
-    /* --- 6. Parcours (Timeline) --- */
-    .timeline::after {
-        left: 20px; /* Décale la ligne verticale sur la gauche */
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 60px; /* Laisse de la place pour la ligne */
-        padding-right: 15px;
-    }
-    
-    .timeline-item:nth-child(even) {
-        left: 0; /* Aligne tous les éléments à gauche */
-    }
-
-    .timeline-item::after {
-        left: 10px; /* Positionne les cercles sur la ligne */
-    }
-}
-
-/* ================================== */
-/* --- STYLES POUR LE CARROUSEL --- */
-/* ================================== */
-
-.carousel {
-    width: 100%;
-    overflow: hidden; /* Cache les projets qui dépassent */
-    position: relative;
-    /* Ajoute un effet de fondu sur les côtés pour un look pro */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.carousel-track {
-    display: flex; /* Aligne les projets horizontalement */
-    /* (Largeur d'une carte + marge) * (nombre total de cartes) */
-    /* (340px) * (8 cartes) = 2720px */
-    width: calc(340px * 8); 
-    animation: scroll 40s linear infinite; /* L'animation de défilement */
-}
-
-/* Met l'animation en pause quand la souris est sur le carrousel */
-.carousel:hover .carousel-track {
-    animation-play-state: paused;
-}
-
-/* Animation qui déplace la piste de gauche à droite */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Se déplace de la moitié de la largeur totale (la longueur des 4 projets originaux) */
-        transform: translateX(calc(-340px * 4));
-    }
-}
-
-/* Style des cartes à l'intérieur du carrousel */
-.carousel .project-card {
-    width: 300px; /* Largeur fixe pour chaque projet */
-    margin: 0 20px; /* Marge entre les projets */
-    flex-shrink: 0; /* Empêche les cartes de rétrécir */
-}
-
-/* --- Style pour les sous-titres de la section Parcours --- */
 .parcours-subtitle {
     text-align: center;
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================= */
+/* --- 5. ANIMATIONS & EFFETS SPÉCIAUX --- */
+/* ============================================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animated-gradient {
+    background: linear-gradient(90deg, #007BFF, #00C6FF, #ee7752, #e73c7e);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 8s ease infinite;
+    position: relative;
+}
+
+.animated-gradient::after {
+    content: '|';
+    position: absolute;
+    right: -10px;
+    font-weight: 300;
+    color: var(--primary-color);
+    animation: blink 1s infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes navLinkFade {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0px); }
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    width: calc(340px * 8); 
+    animation: scroll 50s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel .project-card {
+    width: 300px;
+    margin: 0 20px;
+    flex-shrink: 0;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-340px * 4)); }
+}
+
+
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--primary-color);
+    width: 0%;
+    z-index: 10001;
+    transition: width 0.1s linear;
+}
+
+/* ============================================= */
+/* --- 6. VUE MOBILE (RESPONSIVE) --- */
+/* ============================================= */
+@media screen and (max-width: 768px) {
+    /* --- Ajustements Généraux --- */
+    body { line-height: 1.6; }
+    .section { padding: 3.5rem 0; }
+    .container { padding: 0 1.5rem; }
+
+    /* --- Section d'Accueil --- */
+    .hero h1 { font-size: 2.8rem; }
+    .hero .subtitle { font-size: 1.2rem; }
+
+    /* --- Menu Burger --- */
+    .burger { display: block; }
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: var(--surface-color);
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        border-left: 1px solid #282828;
+        list-style: none;
+        display: flex;
+    }
+    .nav-links li { opacity: 0; margin: 2rem 0; }
+    .nav-active { transform: translateX(0%); }
+    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+    /* --- Section À Propos --- */
+    .about-container { flex-direction: column; text-align: center; }
+    .about-text h2 { text-align: center; }
+    .profile-photo-frame { width: 200px; height: 280px; }
+
+    /* --- Grilles --- */
+    .skills-grid { grid-template-columns: 1fr; }
+
+    /* --- Timeline --- */
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
+    .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 10px; }
 }
