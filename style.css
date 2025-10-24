@@ -448,3 +448,34 @@ body {
     .timeline-item:nth-child(even) { left: 0; }
     .timeline-item::after { left: 10px; }
 }
+
+/* --- Style pour le sélecteur de langue --- */
+.lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--secondary-text-color);
+    font-weight: 600;
+}
+
+.lang-switcher span {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lang-switcher span:not(.active):hover {
+    color: var(--text-color);
+}
+
+.lang-switcher span.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Cacher le sélecteur sur mobile (il sera dans le menu burger) */
+@media screen and (max-width: 768px) {
+    .lang-switcher {
+        display: none; 
+        /* Pour l'instant, on le cache. L'ajouter au menu burger
+           demande de modifier la structure JS du burger. */
+    }
+}
