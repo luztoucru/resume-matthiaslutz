@@ -153,7 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc_copy': 'Participation à un projet universitaire intensif sur une semaine, axé sur la résolution de problématiques concrètes en équipe.',
             'p4Title_copy': 'Création de mon propre NAS',
             'p4Desc_copy': 'Création d\'un serveur NAS, me permettant de stocker à distance mes documents personnels, photos et vidéos en toute sécurité à l\'aide d\'un PC et de l\'OS Truenas Scale.',
-            'contactDesc': 'À la recherche d\'une alternance pour Septembre 2026, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.'
+            'contactDesc': 'À la recherche d\'une alternance pour Septembre 2026, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.',
+            'skillsTitle': 'Mes Compétences',
+            'skill1Title': 'Développement & Programmation',
+            'skill1Desc': 'HTML/CSS, Langage C, Programmation sous environnement Linux.',
+            'skill2Title': 'Logiciels & Systèmes',
+            'skill2Desc': 'Pack Office (Excel, Word, PowerPoint), Hardware & Software, Création d\'applications.',
+            'skill3Title': 'Langues & Créativité',
+            'skill3Desc': 'Anglais (Compétent), Allemand (Avancé), Montage Photos & Vidéos.'
         },
         'en': {
             // Navigation
@@ -219,7 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc_copy': 'Participation in a one-week intensive university project focused on solving concrete problems as a team.',
             'p4Title_copy': 'Custom NAS Server Build',
             'p4Desc_copy': 'Built a NAS server, allowing me to remotely store personal documents, photos, and videos securely using a PC and Truenas Scale OS.',
-            'contactDesc': 'Looking for an apprenticeship starting September 2026, I am available in the Vesoul, Belfort, and Besançon areas.'
+            'contactDesc': 'Looking for an apprenticeship starting September 2026, I am available in the Vesoul, Belfort, and Besançon areas.',
+            'skillsTitle': 'My Skills',
+            'skill1Title': 'Development & Programming',
+            'skill1Desc': 'HTML/CSS, C Language, Programming in Linux environment.',
+            'skill2Title': 'Software & Systems',
+            'skill2Desc': 'Office Suite (Excel, Word, PowerPoint), Hardware & Software, Application development.',
+            'skill3Title': 'Languages & Creativity',
+            'skill3Desc': 'English (Proficient), German (Advanced), Photo & Video Editing.'
         }
     };
 
