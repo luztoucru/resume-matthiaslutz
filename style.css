@@ -352,9 +352,13 @@ body {
     color: var(--text-color);
 }
 
+/* --- Style pour le sélecteur de langue --- */
 .lang-switcher span.active {
-    color: var(--primary-color);
-    font-weight: 700;
+    color: var(--primary-color); /* Met la langue active en couleur primaire */
+    font-weight: 700; /* La met en gras */
+    /* Optionnel : ajouter un soulignement léger */
+    /* text-decoration: underline; */ 
+    /* text-underline-offset: 4px; */ /* Espace entre texte et soulignement */
 }
 
 /* Version PC */

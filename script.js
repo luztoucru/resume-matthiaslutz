@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'navProjects': 'Projets',
             'navContact': 'Contact',
             // Hero
-            'heroGreeting': 'Bonjour, je suis',
+            'heroGreeting': 'Hello, World! Je suis',
             'heroSubtitle': "Étudiant ingénieur de 2e année à l'UTBM, passionné par <em>l'informatique et le sport.</em>",
             'heroButton': 'En apprendre plus sur moi',
             // À propos
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'navProjects': 'Projects',
             'navContact': 'Contact',
             // Hero
-            'heroGreeting': 'Hello, I am',
+            'heroGreeting': 'Hello, World! I am',
             'heroSubtitle': "2nd-year engineering student at UTBM, passionate about <em>IT and sports.</em>",
             'heroButton': 'Learn more about me',
             // About
