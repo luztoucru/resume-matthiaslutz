@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'p4Desc_copy': 'Création d\'un serveur NAS, me permettant de stocker à distance mes documents personnels, photos et vidéos en toute sécurité à l\'aide d\'un PC et de l\'OS Truenas Scale.',
             // Contact & Footer
             'contactTitle': 'Entrons en contact',
-            'contactDesc': 'À la recherche d\'une alternance pour Septembre 2026, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.',
+            'contactDesc': 'À la recherche d\'un apprentissage pour Septembre 2026, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.',
             'contactLinkedIn': '<i class="fab fa-linkedin"></i> LinkedIn',
             'contactEmail': '<i class="fas fa-envelope"></i> E-mail',
             'footerText': '&copy; 2025 - Matthias LUTZ. Tous droits réservés.'
