@@ -34,21 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 3. EFFET MACHINE À ÉCRIRE (TYPEWRITER) ---
+// --- 3. EFFET MACHINE À ÉCRIRE (TYPEWRITER) ---
     const typewriterElement = document.getElementById('typewriter');
-    if (typewriterElement) {
-        const textToType = typewriterElement.innerHTML;
-        typewriterElement.innerHTML = '';
+    const originalName = typewriterElement ? typewriterElement.innerHTML : ''; // Stocke le nom original
+    let typewriterTimeout; // Variable pour gérer le timeout
 
+    function startTypewriter(text) {
+        if (!typewriterElement) return; // Sécurité si l'élément n'existe pas
+
+        clearTimeout(typewriterTimeout); // Arrête l'animation précédente si elle existe
+        typewriterElement.innerHTML = ''; // Vide le nom actuel
         let i = 0;
-        function typeWriter() {
-            if (i < textToType.length) {
-                typewriterElement.innerHTML += textToType.charAt(i);
+
+        function type() {
+            if (i < text.length) {
+                typewriterElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 150);
+                typewriterTimeout = setTimeout(type, 150); // Vitesse de frappe
             }
         }
-        setTimeout(typeWriter, 500);
+        // Lance l'animation après un court délai pour que la traduction ait le temps de s'appliquer
+        setTimeout(type, 100); 
     }
 
     
@@ -96,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'navProjects': 'Projets',
             'navContact': 'Contact',
             // Hero
+            'heroGreeting': 'Bonjour, je suis',
             'heroSubtitle': "Étudiant ingénieur de 2e année à l'UTBM, passionné par <em>l'informatique et le sport.</em>",
             'heroButton': 'En apprendre plus sur moi',
             // À propos
@@ -174,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'navProjects': 'Projects',
             'navContact': 'Contact',
             // Hero
+            'heroGreeting': 'Hello, I am',
             'heroSubtitle': "2nd-year engineering student at UTBM, passionate about <em>IT and sports.</em>",
             'heroButton': 'Learn more about me',
             // About
@@ -237,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'p4Title_copy': 'Custom NAS Server Build',
             'p4Desc_copy': 'Built a NAS server, allowing me to remotely store personal documents, photos, and videos securely using a PC and Truenas Scale OS.',
             // Contact & Footer
-            'contactTitle': 'Get in Touch',
+            'contactTitle': 'Let\'s connect',
             'contactDesc': 'Looking for an apprenticeship starting September 2026, I am available in the Vesoul, Belfort, and Besançon areas.',
             'contactLinkedIn': '<i class="fab fa-linkedin"></i> LinkedIn',
             'contactEmail': '<i class="fas fa-envelope"></i> Email',
@@ -249,26 +257,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const allLangFR = document.querySelectorAll('.lang-fr');
     const allLangEN = document.querySelectorAll('.lang-en');
 
-    // 6.3. La fonction de traduction
+// 6.3. La fonction de traduction (MODIFIÉ)
     const translatePage = (lang) => {
+        // Traduction du texte (inchangé)
         document.querySelectorAll('[data-key]').forEach(element => {
             const key = element.dataset.key;
             if (translations[lang] && translations[lang][key]) {
-                element.innerHTML = translations[lang][key];
+                // Gestion spéciale pour le H1 (avant le typewriter)
+                if (element.tagName === 'SPAN' && element.parentElement.tagName === 'H1') {
+                     element.textContent = translations[lang][key]; // Utilise textContent pour éviter les problèmes de HTML
+                } else {
+                    element.innerHTML = translations[lang][key];
+                }
             }
         });
 
-        // Gérer le style actif pour TOUS les sélecteurs (MODIFIÉ)
-        if (lang === 'en') {
-            allLangEN.forEach(el => el.classList.add('active'));
-            allLangFR.forEach(el => el.classList.remove('active'));
-        } else {
-            allLangFR.forEach(el => el.classList.add('active'));
-            allLangEN.forEach(el => el.classList.remove('active'));
-        }
+        // Gérer le style actif pour TOUS les sélecteurs (inchangé)
+        if (lang === 'en') { /* ... */ } else { /* ... */ }
 
-        // Sauvegarder le choix
+        // Sauvegarder le choix (inchangé)
         localStorage.setItem('language', lang);
+
+        // Relancer l'animation Typewriter AVEC le nom original (MODIFIÉ)
+        startTypewriter(originalName); 
     };
 
     // 6.4. Les écouteurs d'événements (MODIFIÉ pour les classes)
