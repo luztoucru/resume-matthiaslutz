@@ -336,6 +336,7 @@ body {
 }
 
 /* --- Sélecteur de langue --- */
+/* --- Style pour le sélecteur de langue --- */
 .lang-switcher {
     display: flex;
     gap: 0.5rem;
@@ -352,13 +353,22 @@ body {
     color: var(--text-color);
 }
 
-/* --- Style pour le sélecteur de langue --- */
+/* RÈGLE IMPORTANTE POUR LE SUR LIGNAGE */
 .lang-switcher span.active {
-    color: var(--primary-color); /* Met la langue active en couleur primaire */
-    font-weight: 700; /* La met en gras */
-    /* Optionnel : ajouter un soulignement léger */
-    /* text-decoration: underline; */ 
-    /* text-underline-offset: 4px; */ /* Espace entre texte et soulignement */
+    color: var(--primary-color); /* Met en bleu */
+    font-weight: 700;           /* Met en gras */
+}
+
+/* Version PC */
+.desktop-lang {
+    margin-left: 1rem;
+}
+
+/* Version Mobile */
+.mobile-lang {
+    margin-top: 1.5rem;
+    opacity: 0; 
+    display: none; 
 }
 
 /* Version PC */
