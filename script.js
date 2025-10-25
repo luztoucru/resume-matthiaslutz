@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
 
+        // Note : .nav-links li inclut maintenant le .mobile-lang
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = '';
@@ -58,10 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-
             const rotateX = -y / 20;
             const rotateY = x / 20;
-
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
@@ -78,19 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollPercent = (scrollTop / scrollHeight) * 100;
-            
             progressBar.style.width = `${scrollPercent}%`;
         });
     }
 
     // ===============================================
-    // --- 6. NOUVEAU SCRIPT POUR LA TRADUCTION ---
+    // --- 6. SCRIPT DE TRADUCTION (MIS À JOUR) ---
     // ===============================================
 
     // 6.1. Le dictionnaire de traductions
     const translations = {
         'fr': {
             // Navigation
+            'navLogo': 'Bienvenue !',
             'navAbout': 'À propos',
             'navSkills': 'Compétences',
             'navExperience': 'Parcours',
@@ -102,10 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // À propos
             'aboutTitle': 'À propos de moi',
             'aboutText': "Actuellement en Service Civique au sein du CSV70 Handball où je m'occupe d'une partie de la communication digitale, j'ai l'occasion de développer mes compétences en création de contenu pour diverses plateformes. Ancien membre du Conseil Municipal des Jeunes (CMJ) de ma commune et actuellement vice-trésorier de l'association du CMJ, je suis une personne engagée. Ma passion pour le handball m'a appris la discipline et le travail d'équipe, des qualités que je souhaite mettre au service des autres dans le cadre d'une alternance de trois ans dans le domaine de l'informatique.",
+            // Compétences
             'skillsTitle': 'Mes Compétences',
+            'skill1Title': 'Développement & Programmation',
+            'skill1Desc': 'HTML/CSS, Langage C, Programmation sous environnement Linux.',
+            'skill2Title': 'Logiciels & Systèmes',
+            'skill2Desc': 'Pack Office (Excel, Word, PowerPoint), Hardware & Software, Création d\'applications.',
+            'skill3Title': 'Langues & Créativité',
+            'skill3Desc': 'Anglais (Compétent), Allemand (Avancé), Montage Photos & Vidéos.',
+            // Parcours
             'experienceTitle': 'Mon Parcours Scolaire & Professionnel',
-            'projectsTitle': 'Mes Projets',
-            'contactTitle': 'Entrons en contact',
             'formationTitle': 'Formation',
             'f1Title': "Cycle préparatoire d'ingénieur",
             'f1Date': 'Septembre 2024 - Présent',
@@ -120,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'e1Title': 'Assistant communication - Service Civique',
             'e1Date': 'Septembre 2025 - Présent',
             'e1Desc': '<strong>CSVesoul70 Partenaires</strong> - Gestion des réseaux, création de visuels et rédaction de contenu.',
-            'e2Title': 'Opérateur de production & Stagiaire (11 semaines)',
+            'e2Title': 'Opérateur de production & Stagiaire',
             'e2Date': 'Été & Hiver 2025',
             'e2Desc': '<strong>Stellantis</strong> - Missions variées incluant l\'étiquetage, l\'emballage, le contrôle qualité et la gestion de données techniques.',
             'e2Link': 'Voir le rapport',
@@ -133,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'e5Title': 'Stages d\'observation (Collège)',
             'e5Date': '2021 & 2022',
             'e5Desc': 'Stage de 3 jours à la <strong>MMC de Vesoul</strong> et de 5 jours au service informatique de <strong>Vesoul Agrocampus</strong>.',
+            // Projets
             'projectsTitle': 'Mes Projets',
             'p1Title': 'Jeu de lettres en C',
             'p1Desc': 'Développement d\'un jeu de lettres : génération de grille, vérification des mots dans un dictionnaire, timer, score et historique des parties.',
@@ -143,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc': 'Participation à un projet universitaire intensif sur une semaine, axé sur la résolution de problématiques concrètes en équipe.',
             'p4Title': 'Création de mon propre NAS',
             'p4Desc': 'Création d\'un serveur NAS, me permettant de stocker à distance mes documents personnels, photos et vidéos en toute sécurité à l\'aide d\'un PC et de l\'OS Truenas Scale.',
-            // --- Copies pour le carrousel ---
             'p1Title_copy': 'Jeu de lettres en C',
             'p1Desc_copy': 'Développement d\'un jeu de lettres : génération de grille, vérification des mots dans un dictionnaire, timer, score et historique des parties.',
             'p2Title_copy': 'Site de vocabulaire collaboratif',
@@ -153,17 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc_copy': 'Participation à un projet universitaire intensif sur une semaine, axé sur la résolution de problématiques concrètes en équipe.',
             'p4Title_copy': 'Création de mon propre NAS',
             'p4Desc_copy': 'Création d\'un serveur NAS, me permettant de stocker à distance mes documents personnels, photos et vidéos en toute sécurité à l\'aide d\'un PC et de l\'OS Truenas Scale.',
+            // Contact & Footer
+            'contactTitle': 'Entrons en contact',
             'contactDesc': 'À la recherche d\'une alternance pour Septembre 2026, je suis disponible sur les secteurs de Vesoul, Belfort et Besançon.',
-            'skillsTitle': 'Mes Compétences',
-            'skill1Title': 'Développement & Programmation',
-            'skill1Desc': 'HTML/CSS, Langage C, Programmation sous environnement Linux.',
-            'skill2Title': 'Logiciels & Systèmes',
-            'skill2Desc': 'Pack Office (Excel, Word, PowerPoint), Hardware & Software, Création d\'applications.',
-            'skill3Title': 'Langues & Créativité',
-            'skill3Desc': 'Anglais (Compétent), Allemand (Avancé), Montage Photos & Vidéos.'
+            'contactLinkedIn': '<i class="fab fa-linkedin"></i> LinkedIn',
+            'contactEmail': '<i class="fas fa-envelope"></i> E-mail',
+            'footerText': '&copy; 2025 - Matthias LUTZ. Tous droits réservés.'
         },
         'en': {
             // Navigation
+            'navLogo': 'Welcome!',
             'navAbout': 'About',
             'navSkills': 'Skills',
             'navExperience': 'Journey',
@@ -172,13 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hero
             'heroSubtitle': "2nd-year engineering student at UTBM, passionate about <em>IT and sports.</em>",
             'heroButton': 'Learn more about me',
-            // À propos
+            // About
             'aboutTitle': 'About Me',
             'aboutText': "Currently doing a Civic Service at CSV70 Handball where I handle part of the digital communication, I have the opportunity to develop my skills in content creation for various platforms. As a former member of my town's Youth Council (CMJ) and current vice-treasurer of its association, I am a committed person. My passion for handball has taught me discipline and teamwork, qualities I wish to apply in a three-year IT apprenticeship.",
+            // Skills
             'skillsTitle': 'My Skills',
+            'skill1Title': 'Development & Programming',
+            'skill1Desc': 'HTML/CSS, C Language, Programming in Linux environment.',
+            'skill2Title': 'Software & Systems',
+            'skill2Desc': 'Office Suite (Excel, Word, PowerPoint), Hardware & Software, Application development.',
+            'skill3Title': 'Languages & Creativity',
+            'skill3Desc': 'English (Proficient), German (Advanced), Photo & Video Editing.',
+            // Journey
             'experienceTitle': 'My Academic & Professional Journey',
-            'projectsTitle': 'My Projects',
-            'contactTitle': 'Get in Touch',
             'formationTitle': 'Education',
             'f1Title': 'Engineering Preparatory Cycle',
             'f1Date': 'September 2024 - Present',
@@ -193,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'e1Title': 'Communication Assistant - Civic Service',
             'e1Date': 'September 2025 - Present',
             'e1Desc': '<strong>CSVesoul70 Partenaires</strong> - Social media management, visual creation, and content writing.',
-            'e2Title': 'Production Operator & Intern (11 weeks)',
+            'e2Title': 'Production Operator & Intern',
             'e2Date': 'Summer & Winter 2025',
             'e2Desc': '<strong>Stellantis</strong> - Various tasks including labeling, packaging, quality control, and technical data management.',
             'e2Link': 'View Report',
@@ -206,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'e5Title': 'Observation Internships (Middle School)',
             'e5Date': '2021 & 2022',
             'e5Desc': '3-day internship at <strong>MMC de Vesoul</strong> and 5-day internship in the IT department of <strong>Vesoul Agrocampus</strong>.',
+            // Projects
             'projectsTitle': 'My Projects',
             'p1Title': 'Word Game in C',
             'p1Desc': 'Development of a word game: grid generation, word validation against a dictionary, timer, scoring, and game history.',
@@ -216,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc': 'Participation in a one-week intensive university project focused on solving concrete problems as a team.',
             'p4Title': 'Custom NAS Server Build',
             'p4Desc': 'Built a NAS server, allowing me to remotely store personal documents, photos, and videos securely using a PC and Truenas Scale OS.',
-            // --- Copies for carousel ---
             'p1Title_copy': 'Word Game in C',
             'p1Desc_copy': 'Development of a word game: grid generation, word validation against a dictionary, timer, scoring, and game history.',
             'p2Title_copy': 'Collaborative Vocabulary Website',
@@ -226,20 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
             'p3Desc_copy': 'Participation in a one-week intensive university project focused on solving concrete problems as a team.',
             'p4Title_copy': 'Custom NAS Server Build',
             'p4Desc_copy': 'Built a NAS server, allowing me to remotely store personal documents, photos, and videos securely using a PC and Truenas Scale OS.',
+            // Contact & Footer
+            'contactTitle': 'Get in Touch',
             'contactDesc': 'Looking for an apprenticeship starting September 2026, I am available in the Vesoul, Belfort, and Besançon areas.',
-            'skillsTitle': 'My Skills',
-            'skill1Title': 'Development & Programming',
-            'skill1Desc': 'HTML/CSS, C Language, Programming in Linux environment.',
-            'skill2Title': 'Software & Systems',
-            'skill2Desc': 'Office Suite (Excel, Word, PowerPoint), Hardware & Software, Application development.',
-            'skill3Title': 'Languages & Creativity',
-            'skill3Desc': 'English (Proficient), German (Advanced), Photo & Video Editing.'
+            'contactLinkedIn': '<i class="fab fa-linkedin"></i> LinkedIn',
+            'contactEmail': '<i class="fas fa-envelope"></i> Email',
+            'footerText': '&copy; 2025 - Matthias LUTZ. All rights reserved.'
         }
     };
 
-    // 6.2. Les sélecteurs de langue
-    const langFR = document.getElementById('lang-fr');
-    const langEN = document.getElementById('lang-en');
+    // 6.2. Les sélecteurs de langue (MODIFIÉ pour les classes)
+    const allLangFR = document.querySelectorAll('.lang-fr');
+    const allLangEN = document.querySelectorAll('.lang-en');
 
     // 6.3. La fonction de traduction
     const translatePage = (lang) => {
@@ -250,24 +258,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Gérer le style actif
+        // Gérer le style actif pour TOUS les sélecteurs (MODIFIÉ)
         if (lang === 'en') {
-            if(langEN) langEN.classList.add('active');
-            if(langFR) langFR.classList.remove('active');
+            allLangEN.forEach(el => el.classList.add('active'));
+            allLangFR.forEach(el => el.classList.remove('active'));
         } else {
-            if(langFR) langFR.classList.add('active');
-            if(langEN) langEN.classList.remove('active');
+            allLangFR.forEach(el => el.classList.add('active'));
+            allLangEN.forEach(el => el.classList.remove('active'));
         }
 
         // Sauvegarder le choix
         localStorage.setItem('language', lang);
     };
 
-    // 6.4. Les écouteurs d'événements
-    if(langFR && langEN) {
-        langFR.addEventListener('click', () => translatePage('fr'));
-        langEN.addEventListener('click', () => translatePage('en'));
-    }
+    // 6.4. Les écouteurs d'événements (MODIFIÉ pour les classes)
+    allLangFR.forEach(button => {
+        button.addEventListener('click', () => translatePage('fr'));
+    });
+    allLangEN.forEach(button => {
+        button.addEventListener('click', () => translatePage('en'));
+    });
 
     // 6.5. (Bonus) Vérifier la langue sauvegardée au chargement de la page
     const savedLang = localStorage.getItem('language') || 'fr';

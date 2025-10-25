@@ -479,3 +479,54 @@ body {
            demande de modifier la structure JS du burger. */
     }
 }
+
+/* --- Style du sélecteur de langue (mis à jour) --- */
+.lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--secondary-text-color);
+    font-weight: 600;
+}
+.lang-switcher span {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.lang-switcher span:not(.active):hover {
+    color: var(--text-color);
+}
+.lang-switcher span.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Version PC */
+.desktop-lang {
+    margin-left: 1rem;
+}
+
+/* Version Mobile (sera dans la liste) */
+.mobile-lang {
+    margin-top: 1.5rem; /* Ajoute de l'espace dans le menu burger */
+    opacity: 0; /* Géré par l'animation du menu burger */
+}
+
+/* Par défaut (PC), on cache le sélecteur mobile */
+.mobile-lang {
+    display: none;
+}
+
+/* --- DANS VOTRE BLOC @media (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* ... (tous vos autres styles mobiles) ... */
+
+    /* Cacher le sélecteur PC sur mobile */
+    .desktop-lang {
+        display: none;
+    }
+    
+    /* Afficher le sélecteur mobile (il est déjà dans la <ul>) */
+    .mobile-lang {
+        display: flex; /* S'affichera avec les autres liens */
+    }
+}
