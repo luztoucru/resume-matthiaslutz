@@ -103,6 +103,19 @@ body {
     color: var(--primary-color);
 }
 
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
 .hero {
     height: 100vh;
     display: flex;
@@ -126,6 +139,8 @@ body {
 /* ============================================= */
 /* --- 3. COMPOSANTS (BOUTONS, CARTES, TIMELINE) --- */
 /* ============================================= */
+
+/* --- Boutons --- */
 .btn {
     display: inline-block;
     padding: 0.9rem 2.2rem;
@@ -191,33 +206,27 @@ body {
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
 }
 
-.skill-item, .project-card, .timeline-content {
+/* --- Cartes (Glassmorphism & 3D Effect) --- */
+.skill-item, 
+.project-card, 
+.timeline-content {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
     will-change: transform;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), 
+                box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.skill-item:hover, .project-card:hover, .timeline-item:hover .timeline-content {
+.skill-item:hover, 
+.project-card:hover, 
+.timeline-item:hover .timeline-content {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.skill-item i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
+/* --- Timeline --- */
 .timeline {
     position: relative;
     max-width: 800px;
@@ -262,6 +271,8 @@ body {
 /* ============================================= */
 /* --- 4. SECTIONS SPÉCIFIQUES --- */
 /* ============================================= */
+
+/* --- Section À Propos --- */
 .about-container {
     display: flex;
     align-items: center;
@@ -292,6 +303,21 @@ body {
     text-align: left;
 }
 
+/* --- Section Compétences --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Section Parcours --- */
 .parcours-subtitle {
     text-align: center;
     font-size: 1.8rem;
@@ -300,6 +326,7 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* --- Section Contact --- */
 .contact-links {
     display: flex;
     justify-content: center;
@@ -308,9 +335,45 @@ body {
     flex-wrap: wrap;
 }
 
+/* --- Sélecteur de langue --- */
+.lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--secondary-text-color);
+    font-weight: 600;
+}
+
+.lang-switcher span {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lang-switcher span:not(.active):hover {
+    color: var(--text-color);
+}
+
+.lang-switcher span.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Version PC */
+.desktop-lang {
+    margin-left: 1rem;
+}
+
+/* Version Mobile (sera dans la liste) */
+.mobile-lang {
+    margin-top: 1.5rem;
+    opacity: 0; /* Géré par l'animation du menu burger */
+    display: none; /* Caché par défaut sur PC */
+}
+
 /* ============================================= */
 /* --- 5. ANIMATIONS & EFFETS SPÉCIAUX --- */
 /* ============================================= */
+
+/* --- Animation au défilement --- */
 .hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -322,6 +385,7 @@ body {
     transform: translateY(0);
 }
 
+/* --- Effet Typewriter --- */
 .animated-gradient {
     background: linear-gradient(90deg, #007BFF, #00C6FF, #ee7752, #e73c7e);
     background-size: 400% 400%;
@@ -351,11 +415,25 @@ body {
     50% { opacity: 0; }
 }
 
+/* --- Animation Menu Burger --- */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 @keyframes navLinkFade {
     from { opacity: 0; transform: translateX(50px); }
     to { opacity: 1; transform: translateX(0px); }
 }
 
+/* --- Carrousel de Projets --- */
 .carousel {
     width: 100%;
     overflow: hidden;
@@ -385,8 +463,7 @@ body {
     100% { transform: translateX(calc(-340px * 4)); }
 }
 
-
-
+/* --- Barre de Progression --- */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -402,17 +479,30 @@ body {
 /* --- 6. VUE MOBILE (RESPONSIVE) --- */
 /* ============================================= */
 @media screen and (max-width: 768px) {
+
     /* --- Ajustements Généraux --- */
-    body { line-height: 1.6; }
-    .section { padding: 3.5rem 0; }
-    .container { padding: 0 1.5rem; }
+    body { 
+        line-height: 1.6; 
+    }
+    .section { 
+        padding: 3.5rem 0; 
+    }
+    .container { 
+        padding: 0 1.5rem; 
+    }
 
     /* --- Section d'Accueil --- */
-    .hero h1 { font-size: 2.8rem; }
-    .hero .subtitle { font-size: 1.2rem; }
+    .hero h1 { 
+        font-size: 2.8rem; 
+    }
+    .hero .subtitle { 
+        font-size: 1.2rem; 
+    }
 
     /* --- Menu Burger --- */
-    .burger { display: block; }
+    .burger { 
+        display: block; 
+    }
     .nav-links {
         position: fixed;
         right: 0px;
@@ -428,105 +518,54 @@ body {
         list-style: none;
         display: flex;
     }
-    .nav-links li { opacity: 0; margin: 2rem 0; }
-    .nav-active { transform: translateX(0%); }
-    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
-    .toggle .line2 { opacity: 0; }
-    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+    .nav-links li { 
+        opacity: 0; 
+        margin: 2rem 0; 
+    }
+    .nav-active { 
+        transform: translateX(0%); 
+    }
 
     /* --- Section À Propos --- */
-    .about-container { flex-direction: column; text-align: center; }
-    .about-text h2 { text-align: center; }
-    .profile-photo-frame { width: 200px; height: 280px; }
+    .about-container { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+    .about-text h2 { 
+        text-align: center; 
+    }
+    .profile-photo-frame { 
+        width: 200px; 
+        height: 280px; 
+    }
 
     /* --- Grilles --- */
-    .skills-grid { grid-template-columns: 1fr; }
+    .skills-grid { 
+        grid-template-columns: 1fr; 
+    }
 
     /* --- Timeline --- */
-    .timeline::after { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
-    .timeline-item:nth-child(even) { left: 0; }
-    .timeline-item::after { left: 10px; }
-}
-
-/* --- Style pour le sélecteur de langue --- */
-.lang-switcher {
-    display: flex;
-    gap: 0.5rem;
-    color: var(--secondary-text-color);
-    font-weight: 600;
-}
-
-.lang-switcher span {
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.lang-switcher span:not(.active):hover {
-    color: var(--text-color);
-}
-
-.lang-switcher span.active {
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-/* Cacher le sélecteur sur mobile (il sera dans le menu burger) */
-@media screen and (max-width: 768px) {
-    .lang-switcher {
-        display: none; 
-        /* Pour l'instant, on le cache. L'ajouter au menu burger
-           demande de modifier la structure JS du burger. */
+    .timeline::after { 
+        left: 20px; 
     }
-}
+    .timeline-item { 
+        width: 100%; 
+        padding-left: 60px; 
+        padding-right: 15px; 
+    }
+    .timeline-item:nth-child(even) { 
+        left: 0; 
+    }
+    .timeline-item::after { 
+        left: 10px; 
+    }
 
-/* --- Style du sélecteur de langue (mis à jour) --- */
-.lang-switcher {
-    display: flex;
-    gap: 0.5rem;
-    color: var(--secondary-text-color);
-    font-weight: 600;
-}
-.lang-switcher span {
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.lang-switcher span:not(.active):hover {
-    color: var(--text-color);
-}
-.lang-switcher span.active {
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-/* Version PC */
-.desktop-lang {
-    margin-left: 1rem;
-}
-
-/* Version Mobile (sera dans la liste) */
-.mobile-lang {
-    margin-top: 1.5rem; /* Ajoute de l'espace dans le menu burger */
-    opacity: 0; /* Géré par l'animation du menu burger */
-}
-
-/* Par défaut (PC), on cache le sélecteur mobile */
-.mobile-lang {
-    display: none;
-}
-
-/* --- DANS VOTRE BLOC @media (max-width: 768px) --- */
-@media screen and (max-width: 768px) {
-    
-    /* ... (tous vos autres styles mobiles) ... */
-
-    /* Cacher le sélecteur PC sur mobile */
+    /* --- Sélecteur de langue --- */
     .desktop-lang {
         display: none;
     }
-    
-    /* Afficher le sélecteur mobile (il est déjà dans la <ul>) */
     .mobile-lang {
-        display: flex; /* S'affichera avec les autres liens */
+        display: flex;
+        justify-content: center;
     }
 }

@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'en': {
             // Navigation
-            'navLogo': 'Welcome!',
+            'navLogo': 'Welcome !',
             'navAbout': 'About',
             'navSkills': 'Skills',
             'navExperience': 'Journey',
